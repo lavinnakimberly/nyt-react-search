@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const API = {
-  search: function() {
+  search: function(query) {
     let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
     let apiKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
-    let searchTerm = "google";
-    let startDate = 1997;
-    let endDate = 2017;
+    let searchTerm = query.topic;
+    let startDate = query.startYear + "0101";
+    let endDate = query.endYear + "1231";
     return axios.get(`${url}${apiKey}&q=${searchTerm}&begin_date=${startDate}&end_date=${endDate}`)
   },
   // Retrieves all quotes from the db
